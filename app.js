@@ -346,8 +346,16 @@ btnModConsultar.addEventListener('click', () => {
 
 document.querySelectorAll('.btn-back-menu').forEach(btn => {
     btn.addEventListener('click', () => {
+        // Desactivar secciones principales
         secCalificar.classList.remove('active');
         secConsultar.classList.remove('active');
+        
+        // Asegurar que el flujo de calificación se oculte por completo al salir
+        secCalificar.style.display = 'none'; 
+        initialModal.style.display = 'none';
+        mainContainer.style.display = 'none';
+
+        // Mostrar el menú principal
         menuPrincipal.style.display = 'flex';
         resetRubric();
     });
