@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Evaluación PEC 2026</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="menuPrincipal" class="welcome-container">
+        <h1>Evaluación PEC 2026</h1>
+        <h2 style="color: red;">Modo: rúbrica general</h2>
+        <p>Selecciona una acción para comenzar</p>
+        <div class="menu-grid">
+            <button id="btnModCalificar" class="menu-card btn-calificar">
+                <div class="menu-icon">📝</div>
+                <h3 style="color: red;">Calificar Equipos</h3>
+                <small>Presidente de academia o tutor unicamente</small>
+            </button>
+            <button id="btnModConsultar" class="menu-card btn-consultar">
+                <div class="menu-icon">📊</div>
+                <h3 style="color: red;">Consultar puntuaciones</h3>
+                <small>Ver puntos de la rubrica general por gupo</small>
+            </button>
+        </div>
+    </div>
+
+    <div id="secCalificar" class="view-section">
+        <div id="initialModal" class="card-box">
+            <div class="section-header">
+                <button class="btn-back-menu">← Menú</button>
+                <h2>Configuración de Evaluación</h2>
+            </div>
+            <div class="form-group">
+                <label for="modalSemestre">Semestre:</label>
+                <select id="modalSemestre">
+                    <option value="">Seleccione un semestre...</option>
+                    <option value="2do">2do Semestre</option>
+                    <option value="4to">4to Semestre</option>
+                    <option value="6to">6to Semestre</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="modalGrupo">Grupo:</label>
+                <select id="modalGrupo" disabled>
+                    <option value="">Seleccione un grupo...</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="modalEquipo">Equipo:</label>
+                <select id="modalEquipo" disabled>
+                    <option value="">Seleccione un equipo...</option>
+                </select>
+            </div>
+
+            <div id="integrantesContainer" style="display: none; background: #f1f5f9; padding: 12px; border-radius: 8px; margin-bottom: 16px; font-size: 0.9rem; border: 1px solid #cbd5e1;">
+                <strong style="color: var(--primary-color); display: block; margin-bottom: 4px;">Integrantes del equipo:</strong>
+                <span id="listaIntegrantesTexto" style="color: var(--text-main); line-height: 1.4;"></span>
+            </div>
+
+            <button id="btnIniciar" class="btn-primary" disabled>Iniciar Evaluación</button>
+        </div>
+
+        <div id="mainContainer" class="container" style="display: none;">
+            <div class="header-navigation">
+                <button class="btn-navigation" id="btnCambiarEquipo">← Cambiar Equipo</button>
+            </div>
+            <h1 id="mainTitle">Rúbrica de Evaluación PEC 2026</h1>
+            <h3 id="subTitle"></h3>
+            
+            <div id="rubricForm" class="rubric-form">
+                <div class="criterion-card" data-criterion="bitacora"><label>Registros en Bitácora</label><select class="criterion-select">
+                    <option value="3">EXCELENTE: 25 registros o más.</option>
+                    <option value="2">BUENO: Al menos 20 registros.</option>
+                    <option value="1">REGULAR: Al menos 15 registros.</option>
+                    <option value="0">INSUFICIENTE: Menos de 15 registros.</option>
+                </select></div>
+
+                <div class="criterion-card" data-criterion="redaccion"><label>Redacción y Estructura</label><select class="criterion-select">
+                    <option value="3">EXCELENTE: Clara y con todos los elementos.</option>
+                    <option value="2">BUENO: Clara y estructurada, mínimos errores.</option>
+                    <option value="1">REGULAR: Parcial, errores frecuentes.</option>
+                    <option value="0">INSUFICIENTE: Deficiente estructura y ortografía.</option>
+                </select></div>
+
+                <div class="criterion-card" data-criterion="contenido"><label>Contenido de la bitácora</label><select class="criterion-select">
+                    <option value="3">EXCELENTE: Integra 6 elementos.</option>
+                    <option value="2">BUENO: Integra 4 elementos.</option>
+                    <option value="1">REGULAR: Integra 3 elementos.</option>
+                    <option value="0">INSUFICIENTE: Menos de 3 elementos.</option>
+                </select></div>
+
+                <div class="criterion-card" data-criterion="salud"><label>Estado de Salud del Árbol</label><select class="criterion-select">
+                    <option value="3">EXCELENTE: Condiciones propicias.</option>
+                    <option value="2">BUENO: Salud buena, futuro estable.</option>
+                    <option value="1">REGULAR: Salud comprometida.</option>
+                    <option value="0">INSUFICIENTE: Estado deplorable o sin vida.</option>
+                </select></div>
+
+                <div class="criterion-card" data-criterion="material"><label>Cartel, tríptico o infografía</label><select class="criterion-select">
+                    <option value="3">EXCELENTE: Información verídica y persuasiva.</option>
+                    <option value="2">BUENO: Relevante pero no trasciende.</option>
+                    <option value="1">REGULAR: Información básica y obvia.</option>
+                    <option value="0">INSUFICIENTE: Información ambigua o inexistente.</option>
+                </select></div>
+
+                <div class="criterion-card" data-criterion="colaborativo"><label>Trabajo colaborativo</label><select class="criterion-select">
+                    <option value="3">EXCELENTE: Trabajo totalmente colaborativo.</option>
+                    <option value="2">BUENO: Mayoría trabaja colaborativamente.</option>
+                    <option value="1">REGULAR: Parcialmente colaborativo.</option>
+                    <option value="0">INSUFICIENTE: No trabajan colaborativamente.</option>
+                </select></div>
+
+                <div class="criterion-card" data-criterion="vestimenta"><label>Vestimenta formal</label><select class="criterion-select">
+                    <option value="3">EXCELENTE: Cumple totalmente.</option>
+                    <option value="2">BUENO: Cumple en su mayoría.</option>
+                    <option value="1">REGULAR: Cumple parcialmente.</option>
+                    <option value="0">INSUFICIENTE: No cumple.</option>
+                </select></div>
+
+                <div class="criterion-card" data-criterion="lenguaje"><label>Lenguaje verbal y corporal</label><select class="criterion-select">
+                    <option value="3">EXCELENTE: Adecuado.</option>
+                    <option value="2">BUENO: Mayoría adecuado.</option>
+                    <option value="1">REGULAR: Parcialmente adecuado.</option>
+                    <option value="0">INSUFICIENTE: No es adecuado.</option>
+                </select></div>
+
+                <div class="criterion-card" data-criterion="tiempo"><label>Tiempo de presentación</label><select class="criterion-select">
+                    <option value="3">EXCELENTE: 11-15 minutos.</option>
+                    <option value="2">BUENO: 7-10 o 16-19 minutos.</option>
+                    <option value="1">REGULAR: 4-6 o 20-23 minutos.</option>
+                    <option value="0">INSUFICIENTE: Menos de 4 o más de 23 minutos.</option>
+                </select></div>
+
+                <div class="criterion-card" data-criterion="ppt"><label>Estructura PowerPoint</label><select class="criterion-select">
+                    <option value="3">EXCELENTE: Destacable, sin errores.</option>
+                    <option value="2">BUENO: Mínimos errores, claro.</option>
+                    <option value="1">REGULAR: Deficiente, errores frecuentes.</option>
+                    <option value="0">INSUFICIENTE: Muy deficiente, ilegible.</option>
+                </select></div>
+
+                <div class="criterion-card" data-criterion="asistencia"><label>Puntualidad y asistencia</label><select class="criterion-select">
+                    <option value="3">EXCELENTE: Puntual y responsable.</option>
+                    <option value="2">BUENO: Puntual, participación breve.</option>
+                    <option value="1">REGULAR: Llega tarde, poca participación.</option>
+                    <option value="0">INSUFICIENTE: No asiste.</option>
+                </select></div>
+            </div>
+            <div style="margin-top: 25px; margin-bottom: 15px;">
+                <button id="btnConfirmarEvaluacion" class="btn-primary" style="font-size: 1.1rem; padding: 14px;">Confirmar Evaluación</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="secConsultar" class="view-section container">
+        <div class="section-header">
+            <button class="btn-back-menu">← Menú</button>
+            <h2>Consulta de Puntuaciones</h2>
+        </div>
+        
+        <div class="card-box" style="margin-bottom: 20px; padding: 20px;">
+            <div class="filter-grid">
+                <div class="form-group">
+                    <label for="readSemestre">Semestre:</label>
+                    <select id="readSemestre">
+                        <option value="">Seleccione...</option>
+                        <option value="2do">2do Semestre</option>
+                        <option value="4to">4to Semestre</option>
+                        <option value="6to">6to Semestre</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="readGrupo">Grupo:</label>
+                    <select id="readGrupo" disabled>
+                        <option value="">Seleccione un grupo...</option>
+                    </select>
+                </div>
+            </div>
+            <div id="wrapperTipoVista" class="form-group" style="grid-column: 1 / -1; margin-top: 10px; display: flex; gap: 20px; align-items: center;">
+                <label style="margin-bottom: 0;">Visualización:</label>
+                <label style="display: inline-flex; align-items: center; gap: 6px; font-weight: normal; cursor: pointer;">
+                    <input type="radio" name="tipoVistaConsulta" value="equipos" checked> Por Equipos
+                </label>
+                <label style="display: inline-flex; align-items: center; gap: 6px; font-weight: normal; cursor: pointer;">
+                    <input type="radio" name="tipoVistaConsulta" value="alumnos"> Por Alumnos (Orden Alfabético)
+                </label>
+            </div>
+            <button id="btnBuscarCalificaciones" class="btn-primary" style="margin-top: 15px; width: 100%;" disabled>Buscar Registros</button>
+        </div>
+
+        <div id="loaderConsulta" class="loader-spinner" style="display: none;"></div>
+        <div id="containerResultados"></div>
+    </div>
+
+    <div id="confirmModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <h2>Confirmar Evaluación</h2>
+            <div class="confirm-summary">
+                <p><strong>Equipo:</strong> <span id="confirmEquipoText"></span></p>
+                <hr style="border: 0; border-top: 1px solid #eee; margin: 12px 0;">
+                <p>Rúbrica General (Máx 6.0): <span id="confirmRubricaPond" style="font-weight: bold;">0.0</span></p>
+                <hr style="border: 0; border-top: 1px solid #eee; margin: 12px 0;">
+                <p style="font-size: 1.1rem; margin-bottom: 8px;"><strong>Calificación Final:</strong></p>
+                <div id="badgeCalificacion" class="score-badge"><span id="confirmCalificacionText">0.0</span> / 6.0</div>
+            </div>
+            <div style="display: flex; gap: 12px; margin-top: 20px;">
+                <button id="btnRegresarConfirm" class="btn-reset" style="flex: 1;">Regresar</button>
+                <button id="btnGuardarConfirm" class="btn-primary" style="flex: 1;">Confirmar</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="successModal" class="modal" style="display: none;">
+        <div class="modal-content text-center">
+            <div id="modalIconContainer">
+                <div class="loader-spinner"></div>
+            </div>
+            <h2 id="modalStatusTitle" style="margin-top: 20px;">¡Evaluación Guardada!</h2>
+            <p id="modalStatusText">La calificación fue calculada y registrada correctamente.</p>
+        </div>
+    </div>
+
+<script src="grupos.js"></script>
+<script src="materias.js"></script>
+<script src="alumnosEquipos.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
