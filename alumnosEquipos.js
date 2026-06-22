@@ -51,8 +51,37 @@ const equiposPorGrupo = {
         ]
     },
     "401": {
-        "SIN EQUIPO REGISTRADOS": [
-            "Sin alumnos registrados"
+        "EQUIPO DE JAVIER": [
+            "HERNANDEZ MARTINEZ JESUS JAVIER",
+            "HERNANDEZ DEL TORO IRMA GUADALUPE",
+            "QUIÑONES ALMODOVAR ERICK JESSUI",
+            "PEREZ IBARRA ISIDRO DAVID",
+            "AVITIA RAMIREZ AZUL DANAE",
+            "CARBAJAL SANCHEZ JOEL ANTONIO"
+        ],
+        "EQUIPO DE JACYD": [
+            "GARCIA HERNANDEZ JACYD MAYLENE",
+            "VAZQUEZ SOTO VALENTIN",
+            "LOPEZ ORTIZ ALAN JESUS",
+            "SIDA MALDONADO JOSE MARIA",
+            "NUÑEZ AYALA ABEL EDUARDO",
+            "VILLALOBOS ORTIZ ERNESTO FROILAN"
+        ],
+        "EQUIPO DE LUIS ANGEL": [
+            "NIEVES ESCOBEDO XIMENA AIDE",
+            "GOMEZ FRANCO LUIS ANGEL",
+            "HUERTA MARTINEZ CAROLINA ESPERANZA",
+            "QUIÑONEZ CASTRO JUAN JACIEL",
+            "RAMIREZ RODRIGUEZ HECTOR MANUEL",
+            "DOMINGUEZ ONTIVEROS WILLIAM"
+        ],
+        "EQUIPO DE AYLIN": [
+            "HERRERA MARTINEZ AYLIN ARELY",
+            "IBARRA CALLEROS EVELYN GUADALUPE",
+            "IRIGOYEN QUIÑONES BRANDON",
+            "NUÑEZ ZUÑIGA JESUS ALBERTO",
+            "RAMIREZ ORTIZ JAIRO YOSEP",
+            "VALLES NORIEGA ZLATAN KARIM"
         ]
     },
     "402": {
